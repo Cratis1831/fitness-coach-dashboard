@@ -10,7 +10,8 @@ import {
 } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeToggle } from "@/components/theme-modal";
+// import { ThemeToggle } from "@/components/theme-modal";
+import { Zap } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,11 +41,37 @@ export default function RootLayout({
         >
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
-            enableSystem
+            defaultTheme=""
+            enableSystem={false}
             disableTransitionOnChange
           >
             <header className="flex justify-end items-center p-4 gap-4 h-16">
+              <div className="flex items-center justify-center">
+                <Zap className="h-8 w-8 text-orange-500" />
+                <span className="ml-2 text-xl font-bold text-foreground">
+                  FitCoach Pro
+                </span>
+              </div>
+              <nav className="ml-auto flex gap-4 sm:gap-6">
+                <a
+                  className="text-sm font-medium hover:text-orange-500 transition-colors"
+                  href="#features"
+                >
+                  Features
+                </a>
+                <a
+                  className="text-sm font-medium hover:text-orange-500 transition-colors"
+                  href="#testimonials"
+                >
+                  Testimonials
+                </a>
+                <a
+                  className="text-sm font-medium hover:text-orange-500 transition-colors"
+                  href="#pricing"
+                >
+                  Pricing
+                </a>
+              </nav>
               <SignedOut>
                 <SignInButton />
                 <SignUpButton />
@@ -52,7 +79,7 @@ export default function RootLayout({
               <SignedIn>
                 <UserButton />
               </SignedIn>
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
             </header>
             {children}
           </ThemeProvider>
